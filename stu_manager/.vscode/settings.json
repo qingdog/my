@@ -1,0 +1,11 @@
+{
+    "java.project.sourcePaths": [
+        "src",
+        "web",
+        "apache-tomcat-7.0.99"
+    ],
+    "java.project.referencedLibraries": [
+        "web/**/*.jar",
+        "apache-tomcat-7.0.99/lib/*.jar"
+    ]
+}

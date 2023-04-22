@@ -1,0 +1,1 @@
+sed -i "/# GitHub520 Host Start/Q" c:/Windows/System32/drivers/etc/hosts && curl https://raw.hellogithub.com/hosts >> c:/Windows/System32/drivers/etc/hosts
