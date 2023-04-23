@@ -1,6 +1,6 @@
-package com.itheima.exception;
+package com.itheima.config.exception;
 
-public class BusinessException extends RuntimeException{
+public class SystemException extends RuntimeException{
     private Integer code;
 
     public Integer getCode() {
@@ -11,12 +11,12 @@ public class BusinessException extends RuntimeException{
         this.code = code;
     }
 
-    public BusinessException(Integer code, String message) {
+    public SystemException(Integer code, String message) {
         super(message);
         this.code = code;
     }
 
-    public BusinessException(Integer code, String message, Throwable cause) {
+    public SystemException(Integer code, String message, Throwable cause) {
         super(message, cause);
         this.code = code;
     }

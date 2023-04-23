@@ -1,7 +1,5 @@
 package com.itheima.domain;
 
-import com.itheima.util.PageModel;
-
 public class Book {
     private Integer id;
     private String type;

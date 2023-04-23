@@ -1,12 +1,12 @@
-package com.itheima.controller;
+package com.itheima.config.exception;
 
-import com.itheima.exception.BusinessException;
-import com.itheima.exception.SystemException;
+import com.itheima.config.common.Code;
+import com.itheima.config.common.Result;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 @RestControllerAdvice
-public class ProjectExceptionAdvice {
+public class ControllerExceptionAdvice {
     @ExceptionHandler(SystemException.class)
     public Result doSystemException(SystemException ex){
         //记录日志

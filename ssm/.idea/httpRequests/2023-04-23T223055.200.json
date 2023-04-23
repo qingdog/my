@@ -1,0 +1,59 @@
+{
+  "data": {
+    "total": 12,
+    "list": [
+      {
+        "id": 1,
+        "type": "计算机理论",
+        "name": "Spring实战 第五版",
+        "description": "Spring入门经典教程，深入理解Spring原理技术内幕"
+      },
+      {
+        "id": 2,
+        "type": "计算机理论",
+        "name": "Spring 5核心原理与30个类手写实践",
+        "description": "十年沉淀之作，手写Spring精华思想"
+      },
+      {
+        "id": 3,
+        "type": "计算机理论",
+        "name": "Spring 5设计模式",
+        "description": "深入Spring源码刨析Spring源码中蕴含的10大设计模式"
+      },
+      {
+        "id": 4,
+        "type": "计算机理论",
+        "name": "Spring MVC+Mybatis开发从入门到项目实战",
+        "description": "全方位解析面向Web应用的轻量级框架，带你成为Spring MVC开发高手"
+      },
+      {
+        "id": 5,
+        "type": "计算机理论",
+        "name": "轻量级Java Web企业应用实战",
+        "description": "源码级刨析Spring框架，适合已掌握Java基础的读者"
+      }
+    ],
+    "pageNum": 1,
+    "pageSize": 5,
+    "size": 5,
+    "startRow": 1,
+    "endRow": 5,
+    "pages": 3,
+    "prePage": 0,
+    "nextPage": 2,
+    "isFirstPage": true,
+    "isLastPage": false,
+    "hasPreviousPage": false,
+    "hasNextPage": true,
+    "navigatePages": 8,
+    "navigatepageNums": [
+      1,
+      2,
+      3
+    ],
+    "navigateFirstPage": 1,
+    "navigateLastPage": 3
+  },
+  "code": 20041,
+  "msg": ""
+}

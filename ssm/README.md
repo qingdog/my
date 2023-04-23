@@ -371,3 +371,42 @@ public class MyBatisConfig {
 * 视图 - 工具窗口 - JRebel - 勾选项目
 * 以 JRebel Run 或 JRebel debug 方式启动（不再使用idea原图标启动maven），修改 java文件 后编译即热更新
 * 若热部署没有生效，手动删除项目下的.idea目录（包含子目录和.idea中所有文件），文件 - 清除缓存 - 并重启启动
+
+#### 编写mapper.xml
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.itheima.dao.BookDao">
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.itheima.domain.Book">
+        <id column="id" property="id" />
+        <result column="type" property="type" />
+        <result column="name" property="name" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id , name, type
+    </sql>
+
+    <select id="getAll" resultType="com.itheima.domain.Book">
+        select * from tbl_book
+    </select>
+</mapper>
+```
+注意：默认情况下，src/main/java下的非java文件不会编译到target/classes/com/...
+因为src/main/java目录默认只能编译java文件，不能编译mapper.xml，所以一开始把mapper文件放在src/main/java目录下就会找不到mapper文件，但是放在src/main/resources目录下就能找到。
+需要在pom.xml配置一下：
+```xml
+<build>  
+    <resources>  
+        <resource>  
+            <directory>src/main/java</directory>  
+            <includes>  
+                <include>**/*.xml</include>  
+            </includes>  
+        </resource>  
+    </resources>  
+</build>
+```
