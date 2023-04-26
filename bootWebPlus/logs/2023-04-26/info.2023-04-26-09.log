@@ -1,0 +1,42 @@
+2023-04-26 09:04:38,051 INFO [main][ConfigurationClassEnhancer.java:323] - @Bean method SwaggerAutoConfiguration.docketBeanFactoryPostProcessor is non-static and returns an object assignable to Spring's BeanFactoryPostProcessor interface. This will result in a failure to process annotations such as @Autowired, @Resource and @PostConstruct within the method's declaring @Configuration class. Add the 'static' modifier to this method to avoid these container lifecycle issues; see @Bean javadoc for complete details.
+2023-04-26 09:04:38,051 INFO [main][ConfigurationClassEnhancer.java:323] - @Bean method SwaggerAutoConfiguration.docketBeanFactoryPostProcessor is non-static and returns an object assignable to Spring's BeanFactoryPostProcessor interface. This will result in a failure to process annotations such as @Autowired, @Resource and @PostConstruct within the method's declaring @Configuration class. Add the 'static' modifier to this method to avoid these container lifecycle issues; see @Bean javadoc for complete details.
+2023-04-26 09:04:38,475 INFO [main][TomcatWebServer.java:108] - Tomcat initialized with port(s): 8080 (http)
+2023-04-26 09:04:38,475 INFO [main][TomcatWebServer.java:108] - Tomcat initialized with port(s): 8080 (http)
+2023-04-26 09:04:38,580 INFO [main][ServletWebServerApplicationContext.java:292] - Root WebApplicationContext: initialization completed in 1708 ms
+2023-04-26 09:04:38,580 INFO [main][ServletWebServerApplicationContext.java:292] - Root WebApplicationContext: initialization completed in 1708 ms
+2023-04-26 09:04:39,895 INFO [main][WelcomePageHandlerMapping.java:53] - Adding welcome page: class path resource [static/index.html]
+2023-04-26 09:04:39,895 INFO [main][WelcomePageHandlerMapping.java:53] - Adding welcome page: class path resource [static/index.html]
+2023-04-26 09:04:40,052 INFO [main][TomcatWebServer.java:220] - Tomcat started on port(s): 8080 (http) with context path ''
+2023-04-26 09:04:40,052 INFO [main][TomcatWebServer.java:220] - Tomcat started on port(s): 8080 (http) with context path ''
+2023-04-26 09:06:02,144 INFO [http-nio-8080-exec-4][FrameworkServlet.java:525] - Initializing Servlet 'dispatcherServlet'
+2023-04-26 09:06:02,144 INFO [http-nio-8080-exec-4][FrameworkServlet.java:525] - Initializing Servlet 'dispatcherServlet'
+2023-04-26 09:06:02,146 INFO [http-nio-8080-exec-4][FrameworkServlet.java:547] - Completed initialization in 1 ms
+2023-04-26 09:06:02,146 INFO [http-nio-8080-exec-4][FrameworkServlet.java:547] - Completed initialization in 1 ms
+2023-04-26 09:27:16,706 INFO [main][ConfigurationClassEnhancer.java:323] - @Bean method SwaggerAutoConfiguration.docketBeanFactoryPostProcessor is non-static and returns an object assignable to Spring's BeanFactoryPostProcessor interface. This will result in a failure to process annotations such as @Autowired, @Resource and @PostConstruct within the method's declaring @Configuration class. Add the 'static' modifier to this method to avoid these container lifecycle issues; see @Bean javadoc for complete details.
+2023-04-26 09:27:16,706 INFO [main][ConfigurationClassEnhancer.java:323] - @Bean method SwaggerAutoConfiguration.docketBeanFactoryPostProcessor is non-static and returns an object assignable to Spring's BeanFactoryPostProcessor interface. This will result in a failure to process annotations such as @Autowired, @Resource and @PostConstruct within the method's declaring @Configuration class. Add the 'static' modifier to this method to avoid these container lifecycle issues; see @Bean javadoc for complete details.
+2023-04-26 09:27:17,118 INFO [main][TomcatWebServer.java:108] - Tomcat initialized with port(s): 8080 (http)
+2023-04-26 09:27:17,118 INFO [main][TomcatWebServer.java:108] - Tomcat initialized with port(s): 8080 (http)
+2023-04-26 09:27:17,226 INFO [main][ServletWebServerApplicationContext.java:292] - Root WebApplicationContext: initialization completed in 1736 ms
+2023-04-26 09:27:17,226 INFO [main][ServletWebServerApplicationContext.java:292] - Root WebApplicationContext: initialization completed in 1736 ms
+2023-04-26 09:27:18,548 INFO [main][WelcomePageHandlerMapping.java:53] - Adding welcome page: class path resource [static/index.html]
+2023-04-26 09:27:18,548 INFO [main][WelcomePageHandlerMapping.java:53] - Adding welcome page: class path resource [static/index.html]
+2023-04-26 09:27:18,719 INFO [main][TomcatWebServer.java:220] - Tomcat started on port(s): 8080 (http) with context path ''
+2023-04-26 09:27:18,719 INFO [main][TomcatWebServer.java:220] - Tomcat started on port(s): 8080 (http) with context path ''
+2023-04-26 09:27:24,697 INFO [http-nio-8080-exec-1][FrameworkServlet.java:525] - Initializing Servlet 'dispatcherServlet'
+2023-04-26 09:27:24,697 INFO [http-nio-8080-exec-1][FrameworkServlet.java:525] - Initializing Servlet 'dispatcherServlet'
+2023-04-26 09:27:24,698 INFO [http-nio-8080-exec-1][FrameworkServlet.java:547] - Completed initialization in 1 ms
+2023-04-26 09:27:24,698 INFO [http-nio-8080-exec-1][FrameworkServlet.java:547] - Completed initialization in 1 ms
+2023-04-26 09:29:08,857 INFO [main][ConfigurationClassEnhancer.java:323] - @Bean method SwaggerAutoConfiguration.docketBeanFactoryPostProcessor is non-static and returns an object assignable to Spring's BeanFactoryPostProcessor interface. This will result in a failure to process annotations such as @Autowired, @Resource and @PostConstruct within the method's declaring @Configuration class. Add the 'static' modifier to this method to avoid these container lifecycle issues; see @Bean javadoc for complete details.
+2023-04-26 09:29:08,857 INFO [main][ConfigurationClassEnhancer.java:323] - @Bean method SwaggerAutoConfiguration.docketBeanFactoryPostProcessor is non-static and returns an object assignable to Spring's BeanFactoryPostProcessor interface. This will result in a failure to process annotations such as @Autowired, @Resource and @PostConstruct within the method's declaring @Configuration class. Add the 'static' modifier to this method to avoid these container lifecycle issues; see @Bean javadoc for complete details.
+2023-04-26 09:29:09,273 INFO [main][TomcatWebServer.java:108] - Tomcat initialized with port(s): 8080 (http)
+2023-04-26 09:29:09,273 INFO [main][TomcatWebServer.java:108] - Tomcat initialized with port(s): 8080 (http)
+2023-04-26 09:29:09,378 INFO [main][ServletWebServerApplicationContext.java:292] - Root WebApplicationContext: initialization completed in 1721 ms
+2023-04-26 09:29:09,378 INFO [main][ServletWebServerApplicationContext.java:292] - Root WebApplicationContext: initialization completed in 1721 ms
+2023-04-26 09:29:11,146 INFO [main][WelcomePageHandlerMapping.java:53] - Adding welcome page: class path resource [static/index.html]
+2023-04-26 09:29:11,146 INFO [main][WelcomePageHandlerMapping.java:53] - Adding welcome page: class path resource [static/index.html]
+2023-04-26 09:29:11,319 INFO [main][TomcatWebServer.java:220] - Tomcat started on port(s): 8080 (http) with context path ''
+2023-04-26 09:29:11,319 INFO [main][TomcatWebServer.java:220] - Tomcat started on port(s): 8080 (http) with context path ''
+2023-04-26 09:29:11,504 INFO [http-nio-8080-exec-1][FrameworkServlet.java:525] - Initializing Servlet 'dispatcherServlet'
+2023-04-26 09:29:11,504 INFO [http-nio-8080-exec-1][FrameworkServlet.java:525] - Initializing Servlet 'dispatcherServlet'
+2023-04-26 09:29:11,506 INFO [http-nio-8080-exec-1][FrameworkServlet.java:547] - Completed initialization in 2 ms
+2023-04-26 09:29:11,506 INFO [http-nio-8080-exec-1][FrameworkServlet.java:547] - Completed initialization in 2 ms

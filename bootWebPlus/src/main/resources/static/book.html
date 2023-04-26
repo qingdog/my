@@ -1,0 +1,293 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+    <script src="//unpkg.com/vue@3.2.47/dist/vue.global.js"></script>
+    <!-- import CSS -->
+    <link rel="stylesheet" href="//unpkg.com/element-plus@2.3.4/dist/index.css">
+    <!-- import JavaScript -->
+    <script src="//unpkg.com/element-plus@2.3.4/dist/index.full.min.js"></script>
+    <!--<script src="//unpkg.com/element-plus@2.3.4/dist/index.full.js"></script>-->
+    <title>Element Plus demo</title>
+</head>
+<body>
+<div id="app">
+    <el-button @click="visible = true">messageBox</el-button>
+    <el-dialog v-model="visible" title="Tips" width="30%" :before-close="handleClose">
+        <span>从设计上来说，MessageBox 的作用是美化系统自带的 alert、confirm 和 prompt，因此适合展示较为简单的内容。 如果需要弹出较为复杂的内容，请使用 Dialog。</span>
+
+        <template #footer>
+          <span class="dialog-footer">
+            <el-button @click="visible = false;">Cancel</el-button>
+            <el-button type="primary" @click="visible = false;">Confirm</el-button>
+          </span>
+        </template>
+    </el-dialog>
+
+    <!-- Form -->
+    <el-button text @click="dialogFormVisible = true">
+        add book
+    </el-button>
+    <el-dialog v-model="dialogFormVisible" title="添加图书">
+        <el-form :model="saveTable" current-row-key="id">
+
+            <el-form-item label="书名">
+                <el-input v-model="saveTable.name" autocomplete="off"/>
+            </el-form-item>
+            <el-form-item label="类型">
+                <el-input v-model="saveTable.type" autocomplete="off"/>
+            </el-form-item>
+            <el-form-item label="详情">
+                <el-input v-model="saveTable.description" autocomplete="off"/>
+            </el-form-item>
+            <!--<el-form-item label="Zones">
+                <el-select v-model="saveTable.region" placeholder="Please select a zone">
+                    <el-option label="Zone No.1" value="shanghai"/>
+                    <el-option label="Zone No.2" value="beijing"/>
+                </el-select>
+            </el-form-item>-->
+        </el-form>
+        <template #footer="scope">
+          <span class="dialog-footer">
+            <el-button @click="dialogFormVisible = false">Cancel</el-button>
+            <el-button type="primary" @click="addRow()"> Confirm </el-button>
+      </span>
+        </template>
+    </el-dialog>
+
+
+    <el-button @click="getPrePage()" class="dalfBut">上一页</el-button>
+    <el-button @click="getNextPage()" class="dalfBut">下一页</el-button>
+    <span>第</span>
+    <el-input class="filter-item" placeholder="第几页" style="width: 80px;" v-model="current"></el-input>
+    <span>页</span>
+
+    <span>页大小：</span>
+    <el-input class="filter-item" placeholder="页大小" style="width: 80px;" v-model="size"></el-input>
+    <el-button @click="getPage()" type="primary" class="dalfBut">查询</el-button>
+
+    <el-tag type="info">总条数：{{total}}</el-tag>
+
+
+    <el-table :data="tableData" current-row-key="id" style="width: 100%" stripe border
+              :row-class-name="tableRowClassName"
+              ref="singleTableRef" highlight-current-row @current-change="handleCurrentChange">
+        <el-table-column type="selection" width="55"></el-table-column>
+        <el-table-column type="index" width="50"></el-table-column>
+        <el-table-column prop="name" label="书名"></el-table-column>
+        <el-table-column prop="type" label="类型" min-width="30px"></el-table-column>
+        <el-table-column prop="description" label="详情"></el-table-column>
+
+        <el-table-column fixed="right" label="Operations" width="200">
+            <!--<template #default="scope">-->
+            <template v-slot="scope">
+                <el-button link type="primary" size="small" @click="deleteRow(scope.row)">Delete</el-button>
+                <el-button link type="primary" size="small" @click="editRow(scope.row.id)">Edit</el-button>
+                <el-button link type="primary" size="small" @click="deleteRow(tableData[scope.$index])">Delete
+                </el-button>
+                <el-button @click="selectRow(tableData[1])">Select Row</el-button>
+            </template>
+        </el-table-column>
+    </el-table>
+
+    </el-table>
+
+</div>
+
+<script src="//unpkg.com/axios@1.3.6/dist/axios.min.js"></script>
+<script type="text/javascript">
+    // import { ElMessageBox } from 'element-plus'
+    const ElMessageBox = ElementPlus.ElMessageBox;
+    const ElMessage = ElementPlus.ElMessage;
+
+    // import { ref } from 'vue'
+    // const ref = Vue.ref;
+    const {ref} = Vue;
+    const singleTableRef = ref();
+
+    const currentRow = Vue.ref();
+
+    // 文件 - 设置 - 语言 - JavaScript - JavaScript语言版本：Flow
+    const App = {
+        data() {
+            return {
+                message: "Hello Element Plus",
+                visible: false,
+                tableData: [{
+                    id: '',
+                    name: '王小虎',
+                    type: '男',
+                    description: '上海市普陀区金沙江路 1519 弄'
+                }],
+                current: 1,
+                size: 5,
+                total: 0,
+                saveTable: {},
+                dialogFormVisible: false,
+            };
+        },
+        //钩子函数，VUE对象初始化完成后自动执行
+        created() {
+            this.getPage();
+        },
+        methods: {
+            tableRowClassName({row, rowIndex}) {
+                if (rowIndex === 2) {
+                    return 'success-row';
+                }/* else if (rowIndex === 3) {
+                    return 'warning-row';
+                }*/
+                return '';
+            },
+
+            getPage() {
+
+                axios.get("/tblBook/" + this.size + "/" + this.current).then((response) => {
+                    console.log(response.data)
+                    this.tableData = response.data.records;
+
+                    this.setPage(response);
+
+
+                })
+            },
+            getNextPage() {
+                this.current += 1;
+                this.getPage();
+            },
+            getPrePage() {
+                this.current -= 1;
+                this.getPage();
+            },
+
+            setPage(res) {
+                this.current = res.data.current;
+                this.size = res.data.size;
+                this.total = res.data.total;
+            },
+
+            //添加
+            addRow() {
+                //发送ajax请求
+                if (this.saveTable.id) {
+                    this.updateRow();
+                    return;
+                }
+                axios.post("/tblBook", this.saveTable).then((res) => {
+                    console.log(res.data);
+                    //如果操作成功，关闭弹层，显示数据
+                    this.dialogFormVisible = false;
+                    this.$message.success("添加成功");
+                    this.getPage();
+                }).finally(() => {
+                    this.saveTable = {};
+                    // this.getPage();
+                });
+            },
+
+            //弹出编辑窗口
+            updateRow() {
+                //查询数据，根据id查询
+                // axios.get("/books/99").then((res) => {
+                axios.put("/tblBook/", this.saveTable).then((res) => {
+                    this.dialogFormVisible = false;
+                    this.$message.success(res.data.toString());
+
+                }).finally(() => {
+                    this.getPage();
+                    this.saveTable = {};
+                });
+            },
+
+            editRow(id) {
+                // axios.get("/books/99").then((res) => {
+                console.log(id);
+                axios.get("/tblBook/" + id).then((res) => {
+                    console.log(res.data);
+                    this.saveTable = res.data;
+
+                    this.dialogFormVisible = true;
+                });
+            },
+
+            deleteRow(row) {
+                // axios.get("/books/99").then((res) => {
+                console.log(row);
+                axios.delete("/tblBook/" + row.id).then((res) => {
+                }).finally(() => {
+                    this.getPage();
+                });
+            },
+
+            handleClose() {
+                ElementPlus.ElMessageBox.confirm('你是否确认关闭？', '警告', {
+                    confirmButtonText: 'OK',
+                    cancelButtonText: 'Cancel',
+                    type: 'warning',
+                })
+                    .then(() => {
+                        this.$message.success("添加成功");
+                        // ElementPlus.ElMessage({
+                        //     type: 'success',
+                        //     message: 'Delete completed',
+                        // })
+                    })
+                    .catch(() => {
+                        ElMessage({
+                            type: 'info',
+                            message: 'Delete canceled',
+                        })
+                    })
+                this.visible = false;
+            },
+
+            handleCurrentChange(row) {
+                // currentRow.value = row;
+                // console.log(row);
+                if (row)
+                    // typescript安全调用 需要node.js环境，它是 JavaScript 的语法扩展，需要在 TypeScript 或者 Babel 等编译器中编译成原生的 JavaScript 代码才能被浏览器识别。
+                    singleTableRef.value?.toggleRowSelection(row, true); // 多选框
+
+            }
+        },
+        // Vue3
+        setup() {
+            const selectRow = (row) => {
+                singleTableRef.value?.setCurrentRow(row)
+                console.log(row)
+            }
+
+
+            function handleSelectionChange(selection) {
+                console.log(selection)
+            }
+
+            return {singleTableRef, handleSelectionChange, selectRow};
+        },
+        components: {
+            // 注册 Element Plus 组件
+            [Vue.ElTable]: Vue.ElTable
+        }
+        /*mounted() {
+
+        }*/
+    };
+    const app = Vue.createApp(App);
+
+    // 注册 Element Plus 组件
+    app.component('el-table', ElementPlus.ElTable);
+    app.use(ElementPlus);
+    app.mount("#app");
+
+</script>
+</body>
+<style>
+    .el-table .warning-row {
+        background: oldlace;
+    }
+
+    .el-table .success-row {
+        background: #f0f9eb;
+    }
+</style>
+</html>

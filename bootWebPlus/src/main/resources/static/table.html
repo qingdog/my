@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Vue App</title>
+  <script src="https://cdn.bootcdn.net/ajax/libs/vue/3.2.6/vue.global.prod.js"></script>
+  <link rel="stylesheet" href="//unpkg.com/element-plus@2.3.4/dist/index.css">
+  <script src="//unpkg.com/element-plus@2.3.4/dist/index.full.js"></script>
+</head>
+<body>
+<div id="app">
+  <el-table ref="singleTableRef" :data="tableData" @row-click="handleRowClick" highlight-current-row>
+    <el-table-column prop="name" label="Name"></el-table-column>
+    <el-table-column prop="age" label="Age"></el-table-column>
+  </el-table>
+  <el-button @click="highlightCurrentRow(tableData[1])">Highlight Current Row</el-button>
+</div>
+<script>
+  const singleTableRef = Vue.ref();
+
+  const app = Vue.createApp({
+    data() {
+      return {
+        tableData: [
+          { name: 'John', age: 25 },
+          { name: 'Bob', age: 30 },
+          { name: 'Alice', age: 28 }
+        ],
+        currentRow: null
+      }
+    },
+    methods: {
+      handleRowClick(row) {
+        this.currentRow = row
+      },
+      highlightCurrentRow(row) {
+
+        // this.singleTableRef.setCurrentRow(row)
+
+        this.$refs.singleTableRef.setCurrentRow(row)
+        console.log();
+        console.log(row);
+
+        // this.table.value?.setCurrentRow(row)
+      }
+    }
+  })
+  app.use(ElementPlus)
+  app.mount('#app')
+
+
+
+</script>
+</body>
+</html>

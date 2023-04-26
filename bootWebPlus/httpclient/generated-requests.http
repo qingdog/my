@@ -1,0 +1,29 @@
+###
+GET http://127.0.0.1:8080/tblBook
+
+<> 2023-04-24T174614.200.json
+
+###
+GET http://localhost:8080/tblBook/{{pageSize}}/{{pageNo}}
+
+<> 2023-04-25T105035.200.json
+
+###
+POST http://localhost:8080/tblBook/{{pageSize}}/{{pageNo}}
+Content-Type: application/json
+
+{
+  "type": "计算机理论"
+}
+
+<> 2023-04-25T105347.200.json
+
+###
+POST http://localhost:8080/tblBook
+Content-Type: application/json
+
+{
+  "name": "20230426",
+  "type": "计算机理论",
+  "description": "0909"
+}

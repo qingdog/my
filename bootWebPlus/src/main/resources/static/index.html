@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <!-- import CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+</head>
+<body>
+<div id="app">
+    <el-button @click="visible = true">add book</el-button>
+    <el-dialog :visible.sync="visible" title="Hello world">
+        <p>Try Element 666</p>
+    </el-dialog>
+
+
+    <el-button @click="getPrePage()" class="dalfBut">上一页</el-button>
+    <el-button @click="getNextPage()" class="dalfBut">下一页</el-button>
+    <span>第</span>
+    <el-input class="filter-item" placeholder="第几页" style="width: 80px;" v-model="current"></el-input>
+    <span>页</span>
+
+    <span>页大小：</span>
+    <el-input class="filter-item" placeholder="页大小" style="width: 80px;" v-model="size"></el-input>
+    <el-button @click="getPage()" type="primary" class="dalfBut">查询</el-button>
+
+    <el-tag type="info">总条数：{{total}}</el-tag>
+
+
+    <el-table :data="tableData" style="width: 100%" :row-class-name="tableRowClassName">
+        <el-table-column prop="name" label="日期" width="180">
+        </el-table-column>
+        <el-table-column prop="type" label="姓名" width="180">
+        </el-table-column>
+        <el-table-column prop="description" label="地址">
+        </el-table-column>
+    </el-table>
+
+</div>
+
+
+</body>
+<!-- import Vue before Element -->
+<script src="https://unpkg.com/vue@2/dist/vue.js"></script>
+<!-- import JavaScript -->
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+
+<!--发送请求-->
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            visible: false,
+            tableData: [{
+                name: '王小虎',
+                type: '王小虎',
+                description: '上海市普陀区金沙江路 1519 弄'
+            }, {
+                name: '王小虎',
+                type: '王小虎',
+                description: '上海市普陀区金沙江路 1519 弄'
+            }],
+            current: 1,
+            size: 5,
+            total: 0
+        },
+        //钩子函数，VUE对象初始化完成后自动执行
+        created() {
+            this.getPage();
+        },
+        methods: {
+            tableRowClassName({row, rowIndex}) {
+                if (rowIndex === 2) {
+                    console.log(row);
+                    return 'success-row';
+                }/* else if (rowIndex === 3) {
+                    return 'warning-row';
+                }*/
+                return '';
+            },
+            getPage() {
+                axios.get("/tblBook/" + this.size + "/" + this.current).then((response) => {
+                    console.log(response.data)
+                    this.tableData = response.data.records;
+
+                    this.setPage(response);
+                })
+            },
+            getNextPage() {
+                this.current += 1;
+                this.getPage();
+            },
+            getPrePage(){
+                this.current -= 1;
+                this.getPage();
+            },
+
+            setPage(res) {
+                this.current = res.data.current;
+                this.size = res.data.size;
+                this.total = res.data.total;
+            },
+        },
+        /*mounted() {
+
+        }*/
+    })
+</script>
+</html>
+

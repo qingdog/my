@@ -78,17 +78,17 @@ public class ServletConfig extends AbstractDispatcherServletInitializer {
 * 新增MVC配置类
 ```java
 @Configuration
-@ComponentScan("com.itheima.controller")
+@ComponentScan("com.example.controller")
 public class SpringMvcConfig {
 }
 ```
 * 当前文件 - 编辑配置 - 添加新的运行配置 - Maven - 运行 - 命令行 - tomcat7:run - 确定
 * gav 下增加打包方式war
 ```xml
-<groupId>org.example</groupId>
-<artifactId>ssm</artifactId>
-<version>1.0-SNAPSHOT</version>
-<packaging>war</packaging>
+    <groupId>org.example</groupId>
+    <artifactId>ssm</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>war</packaging>
 ```
 ## SSM
 * 文件 - 新建 - 项目 - Maven Archetype - Archetype - 选择：webapp
@@ -107,7 +107,7 @@ public class SpringMvcConfig {
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.itheima</groupId>
+  <groupId>com.example</groupId>
   <artifactId>springmvc_08_ssm</artifactId>
   <version>1.0-SNAPSHOT</version>
   <packaging>war</packaging>
@@ -194,7 +194,7 @@ public class SpringMvcConfig {
 #### SpringConfig配置类
 ```java
 @Configuration
-@ComponentScan({"com.itheima.service"})
+@ComponentScan({"com.example.service"})
 @PropertySource("classpath:jdbc.properties")
 @Import({JdbcConfig.class,MyBatisConfig.class})
 @EnableTransactionManagement
@@ -241,14 +241,14 @@ public class MyBatisConfig {
     public SqlSessionFactoryBean sqlSessionFactory(DataSource dataSource){
         SqlSessionFactoryBean factoryBean = new SqlSessionFactoryBean();
         factoryBean.setDataSource(dataSource);
-        factoryBean.setTypeAliasesPackage("com.itheima.domain");
+        factoryBean.setTypeAliasesPackage("com.example.domain");
         return factoryBean;
     }
 
     @Bean
     public MapperScannerConfigurer mapperScannerConfigurer(){
         MapperScannerConfigurer msc = new MapperScannerConfigurer();
-        msc.setBasePackage("com.itheima.dao");
+        msc.setBasePackage("com.example.dao");
         return msc;
     }
 }
@@ -269,7 +269,7 @@ jdbc.password=root
 
 ```java
 @Configuration
-@ComponentScan("com.itheima.controller")
+@ComponentScan("com.example.controller")
 @EnableWebMvc
 public class SpringMvcConfig {
 }
@@ -309,10 +309,10 @@ public class ServletConfig extends AbstractAnnotationConfigDispatcherServletInit
     <version>5.1.10</version>
 </dependency>
 ```
-```java
-package com.itheima.config;
 
-import com.github.pagehelper.PageHelper;
+```java
+package com.example.config;
+
 import com.github.pagehelper.PageInterceptor;
 import org.apache.ibatis.plugin.Interceptor;
 import org.mybatis.spring.SqlSessionFactoryBean;
@@ -325,19 +325,19 @@ import java.util.Properties;
 public class MyBatisConfig {
 
     @Bean
-    public SqlSessionFactoryBean sqlSessionFactory(DataSource dataSource, PageInterceptor pageInterceptor){
+    public SqlSessionFactoryBean sqlSessionFactory(DataSource dataSource, PageInterceptor pageInterceptor) {
         SqlSessionFactoryBean factoryBean = new SqlSessionFactoryBean();
         factoryBean.setDataSource(dataSource);
-        factoryBean.setTypeAliasesPackage("com.itheima.domain");
+        factoryBean.setTypeAliasesPackage("com.example.domain");
 
         factoryBean.setPlugins(new Interceptor[]{pageInterceptor});
         return factoryBean;
     }
 
     @Bean
-    public MapperScannerConfigurer mapperScannerConfigurer(){
+    public MapperScannerConfigurer mapperScannerConfigurer() {
         MapperScannerConfigurer msc = new MapperScannerConfigurer();
-        msc.setBasePackage("com.itheima.dao");
+        msc.setBasePackage("com.example.dao");
         return msc;
     }
 
@@ -368,21 +368,23 @@ public class MyBatisConfig {
   勾选 I agree with… ，点击按钮验证激活
   提示：d3545f42-7b88-4a77-a2da-5242c46d4bc2 为 UUID，可以自己生成，但是必须是 UUID
 * 生成UUID：https://www.guidgen.com
+* 文件 - 设置 - JRebel & XRebel - off online 关闭联网（可选）
 * 视图 - 工具窗口 - JRebel - 勾选项目
 * 以 JRebel Run 或 JRebel debug 方式启动（不再使用idea原图标启动maven），修改 java文件 后编译即热更新
 * 若热部署没有生效，手动删除项目下的.idea目录（包含子目录和.idea中所有文件），文件 - 清除缓存 - 并重启启动
 
 #### 编写mapper.xml
+
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.itheima.dao.BookDao">
+<mapper namespace="com.example.book.dao.BookDao">
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="com.itheima.domain.Book">
-        <id column="id" property="id" />
-        <result column="type" property="type" />
-        <result column="name" property="name" />
+    <resultMap id="BaseResultMap" type="com.example.book.domain.Book">
+        <id column="id" property="id"/>
+        <result column="type" property="type"/>
+        <result column="name" property="name"/>
     </resultMap>
 
     <!-- 通用查询结果列 -->
@@ -390,7 +392,7 @@ public class MyBatisConfig {
         id , name, type
     </sql>
 
-    <select id="getAll" resultType="com.itheima.domain.Book">
+    <select id="getAll" resultType="com.example.book.domain.Book">
         select * from tbl_book
     </select>
 </mapper>
@@ -399,14 +401,114 @@ public class MyBatisConfig {
 因为src/main/java目录默认只能编译java文件，不能编译mapper.xml，所以一开始把mapper文件放在src/main/java目录下就会找不到mapper文件，但是放在src/main/resources目录下就能找到。
 需要在pom.xml配置一下：
 ```xml
-<build>  
-    <resources>  
-        <resource>  
-            <directory>src/main/java</directory>  
-            <includes>  
-                <include>**/*.xml</include>  
-            </includes>  
-        </resource>  
-    </resources>  
+<build>
+    <resources>
+        <resource>
+            <directory>src/main/java</directory>
+            <includes>
+                <include>**/*.xml</include>
+            </includes>
+        </resource>
+    </resources>
 </build>
+```
+
+#### aop
+引入aspectj依赖
+```xml
+<dependency>
+    <groupId>org.aspectj</groupId>
+    <artifactId>aspectjweaver</artifactId>
+    <version>1.9.7</version>
+</dependency>
+```
+mvc返回增强（ResultExceptionAdvice统一拦截异常，包括aop中的异常）
+```java
+@Configuration
+@ComponentScan({"com.example.*.controller","com.example.*.advice"})
+//@ComponentScan({"com.example.config.support"})
+@Import({ResultExceptionAdvice.class, SpringMvcSupport.class})
+@EnableWebMvc
+@EnableAspectJAutoProxy
+public class SpringMvcConfig {
+}
+```
+修改Controller里的方法返回值类型为Object
+```java
+public class BookController {
+    @Autowired
+    private BookService bookService;
+
+    @GetMapping("/{pageSize}/{pageNum}")
+    public Object getAll(@PathVariable Integer pageSize, @PathVariable Integer pageNum) {
+        PageInfo<Book> pageInfo = bookService.getPageInfo(pageSize, pageNum);
+        return pageInfo;
+    }
+}
+```
+切点匹配方法给通知拦截增强
+
+```java
+package com.example.book.aspect;
+
+@Component
+@Aspect
+public class ResultAspect {
+    @Pointcut("execution(Object com.example.book.controller.*Controller.*(..))")
+    private void point() {
+    }
+
+    @Around("point()")
+    public Object around(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
+        // 表示对原始操作的调用
+        Object proceed = proceedingJoinPoint.proceed();
+        if (proceed instanceof Result) {
+            return proceed;
+        }
+
+//        Integer code = proceed != null ? Code.GET_OK : Code.GET_ERR;
+        String message = "";
+        if (proceed == null) {
+            //获取执行签名信息
+            Signature signature = proceedingJoinPoint.getSignature();
+            //通过签名获取执行操作名称(接口名)
+            String className = signature.getDeclaringTypeName();
+            //通过签名获取执行操作名称(方法名)
+            String methodName = signature.getName();
+            message = "数据查询失败！methodName：" + methodName + "args：" + Arrays.toString(proceedingJoinPoint.getArgs());
+        }
+        return new Result(Code.GET_OK, proceed, message);
+    }
+}
+```
+
+测试
+```java
+import com.example.book.service.BookService;
+import com.example.config.SpringConfiguration;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+//设置类运行器
+@RunWith(SpringJUnit4ClassRunner.class)
+//设置Spring环境对应的配置类
+@ContextConfiguration(classes = {SpringConfiguration.class}) //加载配置类
+//@ContextConfiguration(locations={"classpath:applicationContext.xml"})//加载配置文件
+public class BookTest {
+    //支持自动装配注入bean
+    @Autowired
+    private BookService bookService;
+    @Test
+    public void testFindById(){
+        System.out.println(bookService.getPageInfo(5, 1));
+
+    }
+    @Test
+    public void testFindAll(){
+        System.out.println(bookService.getAll());
+    }
+}
 ```
