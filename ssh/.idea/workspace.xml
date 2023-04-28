@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1faf3e56-a551-4f73-a35b-5f53a12c3f2b" name="变更" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/util/JsonUtil.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ssm.iml" beforeDir="false" afterPath="$PROJECT_DIR$/ssm.iml" afterDir="false" />
-    </list>
+    <list default="true" id="1faf3e56-a551-4f73-a35b-5f53a12c3f2b" name="变更" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -22,6 +19,7 @@
         <option value="spring-beans.schema" />
         <option value="HTTP Public Environment File" />
         <option value="Class" />
+        <option value="Jsp File" />
       </list>
     </option>
   </component>
@@ -59,17 +57,17 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;jdk.selected.JAVA_MODULE&quot;: &quot;1.8&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/IDEA/my/ssm/src/main/java/com/itheima/util&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/IDEA/my/ssh/src/main/webapp/WEB-INF/views&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;项目&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Facet&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15429688&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.zeroturnaround.javarebel.idea.plugin.settings.JRebelSettingsComponent&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;078aab7ae8c1a0df339ac8525790d5e1&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.zeroturnaround.javarebel.idea.plugin.settings.AdvancedConfigurable&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;1787d7646304c5d987cf4e64a3973dc7&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -78,16 +76,22 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\IDEA\my\ssh\src\main\webapp\WEB-INF\views" />
+      <recent name="D:\IDEA\my\ssh\src\main\webapp" />
       <recent name="D:\IDEA\my\ssm\src\main\java\com\itheima\util" />
       <recent name="D:\IDEA\my\ssm\src\main\java\com" />
       <recent name="D:\IDEA\my\ssm\src\main\java" />
-      <recent name="D:\IDEA\my\ssm\src\main\resources" />
-      <recent name="D:\IDEA\my\ssm\src\main\webapp" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\IDEA\my\ssh\src\main\webapp\pages" />
       <recent name="D:\IDEA\my\ssm\httpclient" />
       <recent name="D:\IDEA\my\ssm\src\main\webapp" />
       <recent name="D:\IDEA\my\ssm\src\main" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.example.book.service.impl" />
+      <recent name="" />
+      <recent name="com.example.book.dao" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -102,12 +106,12 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Maven.ssm [tomcat7:run]">
-    <configuration name="generated-requests | 分页查询" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/httpclient/generated-requests.http" requestIdentifier="分页查询" runType="运行单个请求">
+  <component name="RunManager" selected="JUnit.UserTest.testSqlUserQuery">
+    <configuration name="generated-requests | #4" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" index="4" requestIdentifier="#4" runType="运行单个请求">
       <method v="2" />
     </configuration>
     <configuration name="BookTest.testFindAll" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ssm" />
+      <module name="ssh" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="BookTest" />
       <option name="METHOD_NAME" value="testFindAll" />
@@ -116,11 +120,31 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="BookTest.testFindById" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ssm" />
+    <configuration name="UserTest.testFindAll" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ssh" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="BookTest" />
-      <option name="METHOD_NAME" value="testFindById" />
+      <option name="MAIN_CLASS_NAME" value="UserTest" />
+      <option name="METHOD_NAME" value="testFindAll" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserTest.testSqlUserQuery" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ssh" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="UserTest" />
+      <option name="METHOD_NAME" value="testSqlUserQuery" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserTest.testUserAll" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ssh" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="UserTest" />
+      <option name="METHOD_NAME" value="testUserAll" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -131,7 +155,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ssm [tomcat7:run]" type="MavenRunConfiguration" factoryName="Maven" nameIsGenerated="true">
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ssh [tomcat7:run]" type="MavenRunConfiguration" factoryName="Maven">
       <MavenSettings>
         <option name="myGeneralSettings" />
         <option name="myRunnerSettings" />
@@ -156,11 +186,21 @@
       </MavenSettings>
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="HTTP 请求.generated-requests | #4" />
+      <item itemvalue="JUnit.UserTest.testSqlUserQuery" />
+      <item itemvalue="JUnit.UserTest.testFindAll" />
+      <item itemvalue="JUnit.UserTest.testUserAll" />
+      <item itemvalue="JUnit.BookTest.testFindAll" />
+      <item itemvalue="Maven.ssh [tomcat7:run]" />
+    </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.UserTest.testSqlUserQuery" />
+        <item itemvalue="JUnit.UserTest.testUserAll" />
+        <item itemvalue="JUnit.UserTest.testFindAll" />
+        <item itemvalue="HTTP 请求.generated-requests | #4" />
         <item itemvalue="JUnit.BookTest.testFindAll" />
-        <item itemvalue="JUnit.BookTest.testFindById" />
-        <item itemvalue="HTTP 请求.generated-requests | 分页查询" />
       </list>
     </recent_temporary>
   </component>
@@ -181,12 +221,27 @@
       <workItem from="1682296322812" duration="16107000" />
       <workItem from="1682399478137" duration="4544000" />
       <workItem from="1682413064874" duration="12823000" />
-      <workItem from="1682648313737" duration="61000" />
+      <workItem from="1682519711818" duration="6739000" />
+      <workItem from="1682526473464" duration="602000" />
+      <workItem from="1682527090725" duration="2353000" />
+      <workItem from="1682560127416" duration="10867000" />
+      <workItem from="1682574421107" duration="19353000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
