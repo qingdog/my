@@ -10,10 +10,11 @@ import java.beans.PropertyDescriptor;
 import java.lang.reflect.*;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * @version 0.2
- * @apiNote 注意-本类缺少严格的测试
+ * @apiNote 注意测试
  */
 public class JsonUtil {
     //	private Class<?> clazz = this.getClass();
@@ -27,13 +28,14 @@ public class JsonUtil {
     private final HashSet<String> excludeFieldNames = new HashSet<>();
     // 按照字符串类名进行排除字段名集合
     private final HashMap<Class<?>, List<String>> excludeClassFieldNames = new HashMap<>();
-    private final int cycleTimes = 1; // 自循环次数
     // 自定义类型定制器作为属性存入工具类中。只能放一个作用不大，待处理
-    JsonUtilClassCustomizer<?> classCustomizer = null;
+    List<JsonUtilClassCustomizer<?>> classCustomizerList = null;
+    private int cycleTimes = 0; // 自循环次数
     private int recursionTimes = 4; // 递归深度
     private String dateFormat = "yyyy-MM-dd HH:mm";
 
     public JsonUtil() {
+//        this.setCycleTimes(1);
         // EnhancerByCGLIB
         this.excludeFieldNames.add("hibernateLazyInitializer");
         this.excludeFieldNames.add("interceptFieldCallback");
@@ -71,7 +73,7 @@ public class JsonUtil {
     }
 
     public static void main(String[] args) {
-        System.out.println(new JsonUtil().beanToJson("123"));
+        System.out.println(new JsonUtil().beanToJson(new JsonUtil()));
     }
 
 //	public interface JsonUtilClassCustomizer<T> {
@@ -79,12 +81,11 @@ public class JsonUtil {
 //	}
 //	Class<?> jsonUtilClassCustomizer = JsonUtilClassCustomizer.class;
 
-
     /**
-     * JavaBean转换为JSONObject
+     * javaBean对象转换为json对象
      *
-     * @param bean
-     * @return
+     * @param bean JavaBean
+     * @return json
      */
     public JSONObject beanToJson(Object bean) {
         final JsonUtil jsonUtil = this;
@@ -115,18 +116,25 @@ public class JsonUtil {
 		return JSONObject.fromObject(bean, jsonConfig);
 	}*/
 
-    public <T> JSONObject beanToJson(Object bean, JsonUtilClassCustomizer<T> classCustomizer) {
+    public JSONObject beanToJson(Object bean, JsonUtilClassCustomizer<?>... classCustomizers) {
         if (bean == null) return null;
 
-        if (classCustomizer == null) {
-            classCustomizer = new JsonUtilClassCustomizer<T>() {
+        /*if (classCustomizers == null) {
+            classCustomizers = new JsonUtilClassCustomizer<T>() {
                 @Override
                 public JSONObject getValue(T object) {
                     return null;
                 }
             };
-        }
-        this.classCustomizer = classCustomizer;
+        }*/
+        if (classCustomizers == null) {
+            this.classCustomizerList = Collections.singletonList(new JsonUtil.JsonUtilClassCustomizer<Object>() {
+                @Override
+                public JSONObject getValue(Object object) {
+                    return null;
+                }
+            });
+        } else this.classCustomizerList = Arrays.asList(classCustomizers);
 
 		/*Type[] genericInterfaces = classCustomizer.getClass().getGenericInterfaces();
 		if (genericInterfaces.length > 0) {
@@ -168,7 +176,7 @@ public class JsonUtil {
         this.recursionObject.add(set);
 
         // 排除示例：
-        this.excludeClassFieldNames.put(bean.getClass(), Collections.singletonList("class"));
+        this.excludeClassFieldNames.put(bean.getClass(), new ArrayList<>(Collections.singletonList("class")));
         return parseBean(bean, this.recursionTimes);
     }
 
@@ -223,9 +231,9 @@ public class JsonUtil {
             // this.excludeFieldNames.add(name); 修改为更细粒度
             List<String> objects = this.excludeClassFieldNames.get(bean.getClass());
             if (objects == null) {
-                objects = Collections.singletonList(name);
+                objects = new ArrayList<>(Collections.singletonList(name));
             } else {
-                objects.add(name);
+                objects.add("name");
             }
             this.excludeClassFieldNames.put(bean.getClass(), objects);
             log.warn("Property '" + name + "' of " + bean.getClass() + " has no read method. SKIPPED");
@@ -288,14 +296,17 @@ public class JsonUtil {
             value = jsonArray;
         } else {
             // 暂时不考虑无限制
-            if (recursionTimes <= 0) return object.getClass() + " depth overflow!";
-
+            if (recursionTimes <= 0) {
+                return object.getClass() + " depth overflow!";
+            }
             // 不再受次数限制
 //			if (this.clazz.isInstance(object)) {
-            JSONObject clazzValue = this.classCustomizer.getClazzValue(object);
-            // 自定义对象类型的方法获取数据返回null后不保存，继续向下执行解析对象属性
-            if (clazzValue != null) {
-                return clazzValue;
+            Optional<JSONObject> first = this.classCustomizerList.stream()
+                    .map(classCustomizer -> classCustomizer.getClazzValue(object))
+                    .filter(Objects::nonNull).findFirst();
+            // 重写抽象方法结果为null后不返回继续解析
+            if (first.isPresent()) {
+                return first.get();
             }
 
             // 清除该递归次数中的所有对象
@@ -382,7 +393,11 @@ public class JsonUtil {
         return this;
     }
 
-    public abstract class JsonUtilClassCustomizer<T> {
+    public void setCycleTimes(int cycleTimes) {
+        this.cycleTimes = cycleTimes;
+    }
+
+    public abstract static class JsonUtilClassCustomizer<T> {
         Class<?> clazz = this.getClass();
 
         // 使用抽象类通过匿名内部类拿到泛型
@@ -412,9 +427,6 @@ public class JsonUtil {
             return null;
         }
     }
-
-
-
 	/*class old {
 		public <T> boolean isEquals(Object oldObject, Object newObject, String... ignoreProperties) {
 			boolean isEquals = true;

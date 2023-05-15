@@ -1,54 +1,65 @@
+
 <!DOCTYPE html>
 <html>
-<head>
-  <title>My Vue App</title>
-  <script src="https://cdn.bootcdn.net/ajax/libs/vue/3.2.6/vue.global.prod.js"></script>
-  <link rel="stylesheet" href="//unpkg.com/element-plus@2.3.4/dist/index.css">
-  <script src="//unpkg.com/element-plus@2.3.4/dist/index.full.js"></script>
-</head>
-<body>
-<div id="app">
-  <el-table ref="singleTableRef" :data="tableData" @row-click="handleRowClick" highlight-current-row>
-    <el-table-column prop="name" label="Name"></el-table-column>
-    <el-table-column prop="age" label="Age"></el-table-column>
-  </el-table>
-  <el-button @click="highlightCurrentRow(tableData[1])">Highlight Current Row</el-button>
-</div>
-<script>
-  const singleTableRef = Vue.ref();
+  <head>
+    <meta charset="utf-8">
+    <title>Vue Router Example</title>
+    <!-- 引入 Vue.js -->
+    <script src="https://unpkg.com/vue@2/dist/vue.js"></script>
+    <!-- 引入 Vue Router -->
+    <script src="https://unpkg.com/vue-router@3.6.5/dist/vue-router.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <!-- 定义路由链接 -->
+      <router-link to="/about">Go to About</router-link>
+      <!-- 定义路由出口 -->
+      <router-view></router-view>
+    </div>
+    <!--<script>
+		//import index from './index.html'
+		import Home from './Home.vue'
+	
+		const About = {
+			template: index
+		  }
+  
+      // 创建路由实例
+      const router = new VueRouter({
+        routes: [
+          { path: '/about', component: About }
+        ]
+      })
+      // 创建 Vue 实例
+      new Vue({
+        router,
+        el: '#app',
+        components: {
+          /*About: {
+            template: '<div>About</div>'
+          }*/
+        }
+      })
+    </script>-->
+	
+	<script>
+		// 创建路由实例
+		const router = new VueRouter({
+		  routes: [
+			{
+			  path: '/about',
+			  // 使用异步组件
+			  component: () => import('./about.html')
+			}
+		  ]
+		})
 
-  const app = Vue.createApp({
-    data() {
-      return {
-        tableData: [
-          { name: 'John', age: 25 },
-          { name: 'Bob', age: 30 },
-          { name: 'Alice', age: 28 }
-        ],
-        currentRow: null
-      }
-    },
-    methods: {
-      handleRowClick(row) {
-        this.currentRow = row
-      },
-      highlightCurrentRow(row) {
+		// 创建 Vue 实例并挂载到 DOM 元素上
+		new Vue({
+		  el: '#app',
+		  router
+		})
+	  </script>
 
-        // this.singleTableRef.setCurrentRow(row)
-
-        this.$refs.singleTableRef.setCurrentRow(row)
-        console.log();
-        console.log(row);
-
-        // this.table.value?.setCurrentRow(row)
-      }
-    }
-  })
-  app.use(ElementPlus)
-  app.mount('#app')
-
-
-
-</script>
-</body>
+  </body>
 </html>

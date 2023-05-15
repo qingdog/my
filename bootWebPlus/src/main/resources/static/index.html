@@ -6,6 +6,8 @@
     <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
 </head>
 <body>
+
+
 <div id="app">
     <el-button @click="visible = true">add book</el-button>
     <el-dialog :visible.sync="visible" title="Hello world">
@@ -39,10 +41,15 @@
 
 
 </body>
+
+
+
 <!-- import Vue before Element -->
 <script src="https://unpkg.com/vue@2/dist/vue.js"></script>
 <!-- import JavaScript -->
 <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+
+
 
 <!--发送请求-->
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
@@ -66,7 +73,7 @@
         },
         //钩子函数，VUE对象初始化完成后自动执行
         created() {
-            this.getPage();
+            //this.getPage();
         },
         methods: {
             tableRowClassName({row, rowIndex}) {

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>动态组件</title>
+  </head>
+  <body>
+    <div id="app">
+      <router-view></router-view>
+	  
+	  <button @click="switchComponent">切换组件</button>
+    </div>
+    
+    <!-- 引入 Vue.js -->
+    <script src="https://unpkg.com/vue@2/dist/vue.js"></script>
+    <!-- 引入 Vue Router -->
+    <script src="https://unpkg.com/vue-router@3.6.5/dist/vue-router.js"></script>
+
+
+    <script>
+      const Home = { template: '<div>这是首页组件</div>' }
+      const About = () => import('./about.vue')
+      
+      const routes = [
+        { path: '/', component: Home },
+        { path: '/about', component: About }
+      ]
+      
+      const router = new VueRouter({
+        routes
+      })
+      
+      new Vue({
+        el: '#app',
+        router,
+        methods: {
+          switchComponent() {
+		  console.log("123");
+            this.$router.push('/about')
+          }
+        }
+      })
+    </script>
+  </body>
+</html>

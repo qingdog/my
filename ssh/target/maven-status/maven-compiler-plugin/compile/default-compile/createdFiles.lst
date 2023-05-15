@@ -13,6 +13,7 @@ com\example\config\common\Code.class
 com\example\util\JsonUtil$1.class
 com\example\book\domain\Book.class
 com\example\book\dao\BookDao.class
+com\example\book\controller\UserController$1.class
 com\example\book\service\BookService.class
 com\example\util\JsonUtil$JsonUtilClassCustomizer.class
 com\example\book\dao\UserDaoImp.class
@@ -24,5 +25,6 @@ com\example\book\domain\UserDetails.class
 com\example\config\common\Result.class
 com\example\config\HibernateConfig.class
 com\example\book\domain\User.class
+com\example\book\controller\UserController$2.class
 com\example\book\controller\UserController.class
 com\example\config\JdbcConfig.class

@@ -1,5 +1,6 @@
 package com.example.book.controller;
 
+import com.alibaba.fastjson.JSONObject;
 import com.example.book.domain.User;
 import com.example.book.domain.UserDetails;
 import com.example.book.service.UserService;
@@ -55,7 +56,27 @@ public class UserController {
         for (User user : list) {
             UserDetails details = user.getDetails();
             if (details != null) {
-                return new JsonUtil().setExcludeClassFieldNames(details.getClass(), Collections.singletonList("class")).beanToJson(user);
+//                return new JsonUtil().setExcludeClassFieldNames(details.getClass(), Collections.singletonList("class")).beanToJson(user);
+                return new JsonUtil().beanToJson(user, new JsonUtil.JsonUtilClassCustomizer<User>() {
+                    @Override
+                    public JSONObject getValue(User user) {
+                        JSONObject jsonObject = new JSONObject();
+                        jsonObject.put("name", user.getName());
+                        return jsonObject;
+                    }
+                }, new JsonUtil.JsonUtilClassCustomizer<Object>() {// 覆盖后面的UserDetails，以及其他对象
+                    @Override
+                    public JSONObject getValue(Object object) {
+                        return null;
+                    }
+                }, new JsonUtil.JsonUtilClassCustomizer<UserDetails>() {
+                    @Override
+                    public JSONObject getValue(UserDetails userDetails) {
+                        JSONObject jsonObject = new JSONObject();
+                        jsonObject.put("firstName", userDetails.getFirstName());
+                        return jsonObject;
+                    }
+                });
             }
         }
         return list;

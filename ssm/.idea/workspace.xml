@@ -5,8 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1faf3e56-a551-4f73-a35b-5f53a12c3f2b" name="变更" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/util/JsonUtil.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ssm.iml" beforeDir="false" afterPath="$PROJECT_DIR$/ssm.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bootWebPlus/logs/info.log" beforeDir="false" afterPath="$PROJECT_DIR$/../bootWebPlus/logs/info.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bootWebPlus/src/main/resources/static/book.html" beforeDir="false" afterPath="$PROJECT_DIR$/../bootWebPlus/src/main/resources/static/book.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bootWebPlus/src/main/resources/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../bootWebPlus/src/main/resources/static/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bootWebPlus/src/main/resources/static/table.html" beforeDir="false" afterPath="$PROJECT_DIR$/../bootWebPlus/src/main/resources/static/table.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ssh/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ssh/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ssh/src/main/java/com/example/book/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ssh/src/main/java/com/example/book/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ssh/src/main/java/com/example/util/JsonUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ssh/src/main/java/com/example/util/JsonUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ssh/ssh.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../ssh/ssh.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ssh/target/classes/com/example/book/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../ssh/target/classes/com/example/book/controller/UserController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ssh/target/classes/com/example/util/JsonUtil$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../ssh/target/classes/com/example/util/JsonUtil$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ssh/target/classes/com/example/util/JsonUtil$JsonUtilClassCustomizer.class" beforeDir="false" afterPath="$PROJECT_DIR$/../ssh/target/classes/com/example/util/JsonUtil$JsonUtilClassCustomizer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ssh/target/classes/com/example/util/JsonUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/../ssh/target/classes/com/example/util/JsonUtil.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ssh/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/../ssh/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -182,6 +193,7 @@
       <workItem from="1682399478137" duration="4544000" />
       <workItem from="1682413064874" duration="12823000" />
       <workItem from="1682648313737" duration="61000" />
+      <workItem from="1683890179098" duration="18000" />
     </task>
     <servers />
   </component>
