@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itheima.mapper.UserMapper">
+
+    <cache/>
+
+    <resultMap id="userResultMap" type="user" autoMapping="true">
+        <id property="id" column="id"></id>
+        <result property="username" column="username"></result>
+        <result property="password" column="password"></result>
+        <result property="gender" column="gender"></result>
+        <result property="addr" column="addr"></result>
+    </resultMap>
+    <select id="selectById" resultMap="userResultMap">
+        select *
+        from tb_user
+        where id = #{id}
+    </select>
+
+
+
+
+</mapper>
