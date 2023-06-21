@@ -1,0 +1,5 @@
+[user]
+	name = qingdog
+	email = 1759765836@qq.com
+[http]
+	proxy = 127.0.0.1:10809
